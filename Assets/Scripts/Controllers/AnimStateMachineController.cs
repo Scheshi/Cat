@@ -24,11 +24,15 @@ namespace Assets.Scripts.Controllers
 
         private void AnimationPlaying()
         {
+            if (_currentAnimation.AnimSprites == null)
+            {
+                StartAnimation(AnimState.Idle);
+                return;
+            }
             if (_counter >= _currentAnimation.AnimSprites.Count)
             {
                 if(!_isLoop) StartAnimation(AnimState.Idle);
                 _counter = 0.0f;
-                
             }
             else
             {
@@ -44,7 +48,6 @@ namespace Assets.Scripts.Controllers
                 _currentAnimation = _config.Animations.FirstOrDefault(x => x.AnimState == state);
                 _isLoop = isLoop;
             }
-            else return;
         }
 
         public void Execute()
