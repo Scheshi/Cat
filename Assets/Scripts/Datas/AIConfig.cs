@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Datas
 {
@@ -7,5 +8,6 @@ namespace Datas
     {
         public float MinSqrDistanceToTarget;
         public float Speed;
+        public Transform[] Waypoints;
     }
 }

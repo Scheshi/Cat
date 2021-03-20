@@ -22,8 +22,8 @@ namespace Assets.Scripts.Services
     {
         [SerializeField] private Transform _start;
         [SerializeField] private AnimatedObject _player;
-        [SerializeField] private AnimatedObject[] _enemies;
-        [SerializeField] private Seeker _seeker;
+        //[SerializeField] private AnimatedObject[] _enemies;
+        //[SerializeField] private Seeker _seeker;
         
         [SerializeField] private WeaponView _weapon;
         [SerializeField] private GameObject _backGroundObject;
@@ -48,10 +48,10 @@ namespace Assets.Scripts.Services
             _camera = new CameraMove(Camera.main, _player.Obj.transform);
             _backGround = new BackGroundController(_backGroundObject.transform, Camera.main);
             _collisionManager = new CollisionManager(_playerMoveController, _player.Obj, _coins, _deathZones, _endPoint, this);
-            foreach (var enemy in _enemies)
+            /*foreach (var enemy in _enemies)
             {
                 _enemiesControllers.Add(new StalkerAIController(enemy.Obj, new StalkerPathFindingModel(enemy.Config), _seeker, _player.Obj.Transform));
-            }
+            }*/
         }
         
         private void Update()
