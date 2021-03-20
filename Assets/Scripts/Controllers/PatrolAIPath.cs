@@ -3,7 +3,7 @@ using Pathfinding;
 
 namespace Assets.Scripts.Controllers
 {
-    public class PatrolController : AIPath
+    public class PatrolAIPath : AIPath
     {
         #region Events
 

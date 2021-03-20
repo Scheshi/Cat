@@ -25,7 +25,7 @@ namespace Views
    [Header("Protector AI")]
    [SerializeField] private ObjectView _protectorAIView;
    [SerializeField] private AIDestinationSetter _protectorAIDestinationSetter;
-   [SerializeField] private PatrolController _protectorAIPatrolPath;
+   [SerializeField] private PatrolAIPath _protectorAIPatrolPath;
    [SerializeField] private LevelObjectTrigger _protectedZoneTrigger;
    [SerializeField] private Transform[] _protectorWaypoints;
   
@@ -33,7 +33,7 @@ namespace Views
 
    private PatrolAIController _simplePatrolAI;
    private StalkerAIController _stalkerAI;
-   private ZombiePatrolController _protectorAI;
+   private ProtecterController _protectorAI;
    private ProtectedZone _protectedZone;
 
    #endregion
@@ -43,22 +43,32 @@ namespace Views
 
    private void Start()
    {
-       _simplePatrolAI = new PatrolAIController(_simplePatrolAIView, new PatrolPathFindingModel(_simplePatrolAIConfig));
+       if(_simplePatrolAIView != null)
+        _simplePatrolAI = new PatrolAIController(_simplePatrolAIView, new PatrolPathFindingModel(_simplePatrolAIConfig));
       
-       _stalkerAI = new StalkerAIController(_stalkerAIView, new StalkerPathFindingModel(_stalkerAIConfig), _stalkerAISeeker, _stalkerAITarget);
+       if(_stalkerAIView != null)
+        _stalkerAI = new StalkerAIController(_stalkerAIView, new StalkerPathFindingModel(_stalkerAIConfig), _stalkerAISeeker, _stalkerAITarget);
+       Debug.Log(_stalkerAI == null);
+       
+       if (_protectorAIView != null)
+       {
+           _protectorAI = new ProtecterController(_protectorAIView, new ProtecterModel(_protectorWaypoints),
+               _protectorAIDestinationSetter, _protectorAIPatrolPath);
+           _protectorAI.Init();
+       }
+
+       if (_protectedZoneTrigger != null)
+       {
+           _protectedZone = new ProtectedZone(_protectedZoneTrigger, new List<IProtected> {_protectorAI});
+           _protectedZone.Init();
+       }
        InvokeRepeating(nameof(RecalculateAIPath), 0.0f, 1.0f);
-      
-       _protectorAI = new ZombiePatrolController(_protectorAIView, new PatrolModel(_protectorWaypoints), _protectorAIDestinationSetter, _protectorAIPatrolPath);
-       _protectorAI.Init();
-      
-       _protectedZone = new ProtectedZone(_protectedZoneTrigger, new List<IPatrol>{ _protectorAI });
-       _protectedZone.Init();
    }
 
    private void FixedUpdate()
    {
-       if (_simplePatrolAI != null) _simplePatrolAI.FixedUpdate();
-       if (_stalkerAI != null) _stalkerAI.FixedUpdate();
+       _simplePatrolAI?.FixedUpdate();
+       if(_stalkerAI != null) _stalkerAI.FixedUpdate();
    }
 
    private void OnDestroy()

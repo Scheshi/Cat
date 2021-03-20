@@ -2,7 +2,7 @@
 
 namespace Models
 {
-    public class PatrolModel
+    public class ProtecterModel
     {
         #region Fields
 
@@ -14,7 +14,7 @@ namespace Models
 
         #region Methods
 
-        public PatrolModel(Transform[] waypoints)
+        public ProtecterModel(Transform[] waypoints)
         {
             _waypoints = waypoints;
             _currentPointIndex = 0;

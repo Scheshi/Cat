@@ -15,16 +15,14 @@ namespace Assets.Scripts.Services
     {
         public ObjectView Obj;
         public AnimConfig AnimationConfig;
-        public AIConfig Config;
     }
 
     public class GameController: MonoBehaviour
     {
         [SerializeField] private Transform _start;
         [SerializeField] private AnimatedObject _player;
-        //[SerializeField] private AnimatedObject[] _enemies;
-        //[SerializeField] private Seeker _seeker;
-        
+        [SerializeField] private AnimatedObject[] _animatedEnemies;
+
         [SerializeField] private WeaponView _weapon;
         [SerializeField] private GameObject _backGroundObject;
         [SerializeField] private ObjectView[] _coins;
@@ -37,7 +35,7 @@ namespace Assets.Scripts.Services
         private CameraMove _camera;
         private BackGroundController _backGround;
         private CollisionManager _collisionManager;
-        private List<StalkerAIController> _enemiesControllers = new List<StalkerAIController>();
+        private List<EnemyAnimationController> _enemiesControllers = new List<EnemyAnimationController>();
 
         private void Awake()
         {
@@ -48,10 +46,12 @@ namespace Assets.Scripts.Services
             _camera = new CameraMove(Camera.main, _player.Obj.transform);
             _backGround = new BackGroundController(_backGroundObject.transform, Camera.main);
             _collisionManager = new CollisionManager(_playerMoveController, _player.Obj, _coins, _deathZones, _endPoint, this);
-            /*foreach (var enemy in _enemies)
+            foreach (var enemy in _animatedEnemies)
             {
-                _enemiesControllers.Add(new StalkerAIController(enemy.Obj, new StalkerPathFindingModel(enemy.Config), _seeker, _player.Obj.Transform));
-            }*/
+                var anim = new AnimStateMachineController(enemy.AnimationConfig, enemy.Obj.GetComponent<SpriteRenderer>(), 12.0f);
+                _enemiesControllers.Add(new EnemyAnimationController(enemy.Obj, anim));
+                anim.StartAnimation(AnimState.Run);
+            }
         }
         
         private void Update()
@@ -61,17 +61,15 @@ namespace Assets.Scripts.Services
             _weaponRotation.Execute();
             _camera.Execute();
             _backGround.Execute();
-            
+            foreach (var controller in _enemiesControllers)
+            {
+                controller.Update();
+            }
         }
 
         private void FixedUpdate()
         {
             _playerMoveController.FixedExecute();
-            
-            foreach (var enemy in _enemiesControllers)
-            {
-                enemy.FixedUpdate();
-            }
         }
 
         public void Restart()

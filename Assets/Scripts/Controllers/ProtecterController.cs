@@ -6,14 +6,14 @@ using UnityEngine;
 
 namespace Assets.Scripts.Controllers
 {
-    public class ZombiePatrolController : IPatrol
+    public class ProtecterController : IProtected
     {
         #region Fields
 
         private readonly ObjectView _view;
-        private readonly PatrolModel _model;
+        private readonly ProtecterModel _model;
         private readonly AIDestinationSetter _destinationSetter;
-        private readonly PatrolController _patrol;
+        private readonly PatrolAIPath _patrol;
   
         private bool _isPatrolling;
 
@@ -22,7 +22,7 @@ namespace Assets.Scripts.Controllers
 
         #region Class life cycles
   
-        public ZombiePatrolController(ObjectView view, PatrolModel model, AIDestinationSetter destinationSetter, PatrolController patrol)
+        public ProtecterController(ObjectView view, ProtecterModel model, AIDestinationSetter destinationSetter, PatrolAIPath patrol)
         {
             _view = view != null ? view : throw new ArgumentNullException(nameof(view));
             _model = model != null ? model : throw new ArgumentNullException(nameof(model));

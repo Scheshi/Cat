@@ -1,3 +1,4 @@
+using System;
 using System.Linq;
 using Assets.Scripts.Enums;
 using Assets.Scripts.Structs;
@@ -17,8 +18,8 @@ namespace Assets.Scripts.Controllers
         
         public AnimStateMachineController(AnimConfig config, SpriteRenderer renderer, float speed)
         {
-            _config = config;
-            _renderer = renderer;
+            _config = config != default ? config : throw new ArgumentException(nameof(config));
+            _renderer = renderer != null ? renderer : throw new ArgumentException(nameof(renderer));
             _animSpeed = speed;
         }
 

@@ -10,14 +10,14 @@ namespace Models
     {
         #region Fields
   
-        private readonly List<IPatrol> _protectors;
+        private readonly List<IProtected> _protectors;
         private readonly LevelObjectTrigger _view;
   
         #endregion
 
         #region Class life cycles
   
-        public ProtectedZone(LevelObjectTrigger view, List<IPatrol> protectors)
+        public ProtectedZone(LevelObjectTrigger view, List<IProtected> protectors)
         {
             _view = view != null ? view : throw new ArgumentNullException(nameof(view));
             _protectors = protectors != null ? protectors : throw new ArgumentNullException(nameof(protectors));;
