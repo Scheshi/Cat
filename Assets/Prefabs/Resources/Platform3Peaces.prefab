@@ -91,7 +91,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8837146922523623684}
   - component: {fileID: 8098250503635827557}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform3Peaces
   m_TagString: Untagged
   m_Icon: {fileID: 0}
