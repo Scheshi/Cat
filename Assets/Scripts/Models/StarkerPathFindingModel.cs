@@ -29,14 +29,12 @@ public class StalkerPathFindingModel
   
     public void UpdatePath(Path p)
     {
-        Debug.Log("Update Path in stalker model");
         _path = p;
         _currentPointIndex = 0;
     }
   
     public Vector2 CalculateVelocity(Vector2 fromPosition)
     {
-        Debug.Log("Calculate velocity");
         if (_path == null) return Vector2.zero;
         if (_currentPointIndex >= _path.vectorPath.Count) return Vector2.zero;
 

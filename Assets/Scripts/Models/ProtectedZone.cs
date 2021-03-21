@@ -39,19 +39,19 @@ namespace Models
   
         #region Methods
   
-        private void OnContact(object sender, GameObject gameObject)
+        private void OnContact(object sender, Transform transform)
         {
             foreach (var protector in _protectors)
             {
-                protector.StartProtection(gameObject);
+                protector.StartProtection(transform);
             }       
         }
 
-        private void OnExit(object sender, GameObject gameObject)
+        private void OnExit(object sender, Transform transform)
         {
             foreach (var protector in _protectors)
             {
-                protector.FinishProtection(gameObject);
+                protector.FinishProtection();
             } 
         }
   

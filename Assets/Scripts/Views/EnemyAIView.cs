@@ -12,7 +12,8 @@ namespace Views
 {
     public class EnemyAIView : MonoBehaviour
     { 
-        [Header("Simple AI")]
+        
+   [Header("Simple AI")]
    [SerializeField] private AIConfig _simplePatrolAIConfig;
    [SerializeField] private ObjectView _simplePatrolAIView;
 
@@ -22,13 +23,14 @@ namespace Views
    [SerializeField] private Seeker _stalkerAISeeker;
    [SerializeField] private Transform _stalkerAITarget;
 
-   [Header("Protector AI")]
+   [Header("Protector AI")] 
+   [SerializeField] private AIConfig _protectorConfig;
    [SerializeField] private ObjectView _protectorAIView;
-   [SerializeField] private AIDestinationSetter _protectorAIDestinationSetter;
-   [SerializeField] private PatrolAIPath _protectorAIPatrolPath;
+   //[SerializeField] private AIDestinationSetter _protectorAIDestinationSetter;
+   //[SerializeField] private PatrolAIPath _protectorAIPatrolPath;
    [SerializeField] private LevelObjectTrigger _protectedZoneTrigger;
-   [SerializeField] private Transform[] _protectorWaypoints;
-  
+   [SerializeField] private Seeker _protecterSeeker;
+
    #region Fields
 
    private PatrolAIController _simplePatrolAI;
@@ -52,9 +54,8 @@ namespace Views
        
        if (_protectorAIView != null)
        {
-           _protectorAI = new ProtecterController(_protectorAIView, new ProtecterModel(_protectorWaypoints),
-               _protectorAIDestinationSetter, _protectorAIPatrolPath);
-           _protectorAI.Init();
+           _protectorAI = new ProtecterController(_protectorAIView, new ProtecterModel(_protectorConfig), _protecterSeeker);
+           //_protectorAI.Init();
        }
 
        if (_protectedZoneTrigger != null)
@@ -68,13 +69,14 @@ namespace Views
    private void FixedUpdate()
    {
        _simplePatrolAI?.FixedUpdate();
-       if(_stalkerAI != null) _stalkerAI.FixedUpdate();
+       _stalkerAI?.FixedUpdate();
+       _protectorAI?.FixedUpdate();
    }
 
    private void OnDestroy()
    {
-       _protectorAI.Deinit();
-       _protectedZone.Deinit();
+       //_protectorAI?.Deinit();
+       _protectedZone?.Deinit();
    }
 
    #endregion
@@ -83,7 +85,8 @@ namespace Views
 
    private void RecalculateAIPath()
    {
-       _stalkerAI.RecalculatePath();
+       _stalkerAI?.RecalculatePath();
+       _protectorAI?.RecalculatePath();
    }
       
    #endregion

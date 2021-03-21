@@ -29,7 +29,6 @@ namespace Assets.Scripts.Controllers
 
         public void FixedUpdate()
         {
-            Debug.Log("Fixed Update");
             var newVelocity = _model.CalculateVelocity(_view.Transform.position) * Time.fixedDeltaTime;
             _view.Rigidbody.velocity = newVelocity;
         }

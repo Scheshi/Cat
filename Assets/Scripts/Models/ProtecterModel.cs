@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using Datas;
+using Pathfinding;
+using UnityEngine;
 
 namespace Models
 {
@@ -6,17 +8,26 @@ namespace Models
     {
         #region Fields
 
+        private AIConfig _config;
         private readonly Transform[] _waypoints;
         private int _currentPointIndex;
+        private Transform _target;
+        private Path _path;
 
         #endregion
 
+        #region Properties
+
+        public Transform Target => _target;
+        
+        #endregion
 
         #region Methods
 
-        public ProtecterModel(Transform[] waypoints)
+        public ProtecterModel(AIConfig config)
         {
-            _waypoints = waypoints;
+            _waypoints = config.Waypoints;
+            _config = config;
             _currentPointIndex = 0;
         }
   
@@ -27,7 +38,7 @@ namespace Models
             return _waypoints[_currentPointIndex];
         }
 
-        public Transform GetClosestTarget(Vector2 fromPosition)
+        /*public Transform GetClosestTarget(Vector2 fromPosition)
         {
             if (_waypoints == null) return null;
     
@@ -44,6 +55,34 @@ namespace Models
             }
             _currentPointIndex = closestIndex;
             return _waypoints[_currentPointIndex];
+        }*/
+        
+        public Vector2 CalculateVelocity(Vector2 fromPosition)
+        {
+            Debug.Log("Calculate velocity");
+                if (_path == null) return Vector2.zero;
+                if (_currentPointIndex >= _path.vectorPath.Count) return Vector2.zero;
+
+                var direction = ((Vector2)_path.vectorPath[_currentPointIndex] - fromPosition).normalized;
+                var result = _config.Speed * direction;
+                var sqrDistance = Vector2.SqrMagnitude((Vector2) _path.vectorPath[_currentPointIndex] - fromPosition);
+                if (sqrDistance <= _config.MinSqrDistanceToTarget)
+                {
+                    _currentPointIndex++;
+                }
+                return result;
+        }
+        
+        public void UpdatePath(Path p)
+        {
+            Debug.Log("Update Path in stalker model");
+            _path = p;
+            _currentPointIndex = 0;
+        }
+
+        public void SetTarget(Transform target)
+        {
+            _target = target;
         }
 
         #endregion

@@ -12,8 +12,9 @@ namespace Assets.Scripts.Controllers
 
         private readonly ObjectView _view;
         private readonly ProtecterModel _model;
-        private readonly AIDestinationSetter _destinationSetter;
-        private readonly PatrolAIPath _patrol;
+        //private readonly AIDestinationSetter _destinationSetter;
+        private readonly Seeker _seeker;
+        //private readonly PatrolAIPath _patrol;
   
         private bool _isPatrolling;
 
@@ -22,24 +23,14 @@ namespace Assets.Scripts.Controllers
 
         #region Class life cycles
   
-        public ProtecterController(ObjectView view, ProtecterModel model, AIDestinationSetter destinationSetter, PatrolAIPath patrol)
+        public ProtecterController(ObjectView view, ProtecterModel model, Seeker seeker)
         {
             _view = view != null ? view : throw new ArgumentNullException(nameof(view));
             _model = model != null ? model : throw new ArgumentNullException(nameof(model));
-            _destinationSetter = destinationSetter != null ? destinationSetter : throw new ArgumentNullException(nameof(patrol));
-            _patrol = patrol != null ? patrol : throw new ArgumentNullException(nameof(model));
-        }
-
-        public void Init()
-        {
-            _destinationSetter.target = _model.GetNextTarget();
-            _isPatrolling = true;
-            _patrol.TargetReached += OnTargetReached;
-        }
-
-        public void Deinit()
-        {
-            _patrol.TargetReached -= OnTargetReached;
+            //_destinationSetter = destinationSetter != null ? destinationSetter : throw new ArgumentNullException(nameof(patrol));
+            //_patrol = patrol != null ? patrol : throw new ArgumentNullException(nameof(model));
+            _seeker = seeker != null ? seeker : throw new ArgumentNullException(nameof(seeker));
+            FinishProtection();
         }
 
         #endregion
@@ -47,23 +38,37 @@ namespace Assets.Scripts.Controllers
 
         #region Methods
 
-        private void OnTargetReached(object sender, EventArgs e)
-        {
-            _destinationSetter.target = _isPatrolling
-                ? _model.GetNextTarget()
-                : _model.GetClosestTarget(_view.Transform.position);
-        }
-  
-        public void StartProtection(GameObject invader)
+        public void StartProtection(Transform target)
         {
             _isPatrolling = false;
-            _destinationSetter.target = invader.transform;
+            _model.SetTarget(target);
         }
 
-        public void FinishProtection(GameObject invader)
+        public void FinishProtection()
         {
             _isPatrolling = true;
-            _destinationSetter.target = _model.GetClosestTarget(_view.Transform.position);
+            _model.SetTarget(_model.GetNextTarget());
+        }
+        
+        public void FixedUpdate()
+        {
+            Debug.Log("Fixed Update");
+            var newVelocity = _model.CalculateVelocity(_view.Transform.position) * Time.fixedDeltaTime;
+            _view.Rigidbody.velocity = newVelocity;
+        }
+  
+        public void RecalculatePath()
+        {
+            if (_seeker.IsDone())
+            {
+                _seeker.StartPath(_view.Rigidbody.position, _model.Target.position, OnPathComplete);
+            }
+        }
+
+        private void OnPathComplete(Path p)
+        {
+            if (p.error) return;
+            _model.UpdatePath(p);
         }
 
         #endregion

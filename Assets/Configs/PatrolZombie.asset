@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 573fdffdba2f211489179c6251713a5d, type: 3}
+  m_Name: PatrolZombie
+  m_EditorClassIdentifier: 
+  Animations:
+  - AnimState: 1
+    AnimSprites:
+    - {fileID: 4435595895994517524, guid: dc8052986ccce6241ab940664336c4c1, type: 3}
+    - {fileID: 8136906498555432754, guid: dc8052986ccce6241ab940664336c4c1, type: 3}
+    - {fileID: -6877550859844355663, guid: dc8052986ccce6241ab940664336c4c1, type: 3}
+    - {fileID: -4929656806734892809, guid: dc8052986ccce6241ab940664336c4c1, type: 3}
+  - AnimState: 0
+    AnimSprites:
+    - {fileID: 8136906498555432754, guid: dc8052986ccce6241ab940664336c4c1, type: 3}

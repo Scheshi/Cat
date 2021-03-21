@@ -7,8 +7,8 @@ namespace Views
     {
         #region Events
 
-        public event EventHandler<GameObject> TriggerEnter;
-        public event EventHandler<GameObject> TriggerExit;
+        public event EventHandler<Transform> TriggerEnter;
+        public event EventHandler<Transform> TriggerExit;
 
         #endregion
   
@@ -17,12 +17,12 @@ namespace Views
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            TriggerEnter?.Invoke(this, other.gameObject);
+            TriggerEnter?.Invoke(this, other.transform);
         }
 
         private void OnTriggerExit2D(Collider2D other)
         {
-            TriggerExit?.Invoke(this, other.gameObject);
+            TriggerExit?.Invoke(this, other.transform);
         }
 
         #endregion
