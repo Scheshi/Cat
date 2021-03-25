@@ -29,6 +29,8 @@ namespace Assets.Scripts.Services
         [SerializeField] private ObjectView[] _deathZones;
         [SerializeField] private ObjectView _endPoint;
 
+        [SerializeField] private GenerateLevelView _generateLevel;
+
         private AnimStateMachineController _animatorController;
         private PlayerMove _playerMoveController;
         private WeaponRotation _weaponRotation;
@@ -39,6 +41,8 @@ namespace Assets.Scripts.Services
 
         private void Awake()
         {
+            var generate = new GenerateLevelController(_generateLevel);
+            generate.GenerateLevel();
             _animatorController = new AnimStateMachineController(_player.AnimationConfig, _player.Obj.SpriteRenderer, 12.0f);
             _animatorController.StartAnimation(AnimState.Idle);
             _playerMoveController = new PlayerMove(_player.Obj, _animatorController, this);
