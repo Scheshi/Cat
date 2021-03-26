@@ -732,8 +732,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.047412217, y: 0.5}
-  m_Size: {x: 0.29160655, y: 1}
+  m_Offset: {x: 0.047412217, y: 0.4534347}
+  m_Size: {x: 0.29160655, y: 0.9068694}
   m_Direction: 0
 --- !u!50 &249894307
 Rigidbody2D:
@@ -1708,11 +1708,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 732219878}
+  - component: {fileID: 732219882}
   - component: {fileID: 732219877}
   - component: {fileID: 732219879}
   - component: {fileID: 732219880}
   - component: {fileID: 732219881}
-  - component: {fileID: 732219882}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -1787,7 +1787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   version: 1
   data:
-    dataString: UEsDBBQAAAgIAAA4Iewz4V+HWAIAAP0EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMzk3GNhCa3lpCSA/5mNBOLr4s0hprkCWPJAdIhv/elWywS6dckHffrt57u/Ynk9rVyL2xSyvFoxHIvo1YOLMvoz75gHvYGL2SH3jCvEnhywCCiHkFLw3F01DmTIXeSv5db1QAJxRstCyMrRZig3PjvKNwAcohpazxoVpT6HPE9vR3dRtKDnTKZuH0QafbZHSkI0ft0fbQNLtOxgn9Zl3FCd/CG80VVDWKwL2vmmQdOr2JME2qOkRQwI1S0nWUmD/UUfKqLtFi0CwkkMJII7meUqBEuSl94Dusfi4Kh77jZOFwJy1Z1bZlP0zrXwVu2xJ7B9WEi7JpS6pt+vhP/iqN6cKa6uF0b5qEO3wp+fYVDhycHxg8DN/11NPozw7UFtYK30rUT2ZpTaMFJb1tQmnjMLvrH8/S5iXybR9vqV4Em7o3PLmYTtBwjOr3cyWrdXRy0gZWykTD4xKgpdH8JMJxRVzXgqKBxW+Hv2Az3KUucS+t85TqVOpAb20aG6BsET0Laho/N1ajHXaoUYPyhxfq4y9neJH7f9U9hNemu73Lnd6Gi5IY7vFJcpF6MbvztFxpdo/oyufGK6mxtzoknsioudG6XbGhpFPZqrEF8EHZppHi791iN+N1mkIyxoRzAQBXs6RYT/kEx6L4mqWzjMXlk5p0gnppiXb20Nh031zTop2+JqOlhTquu7CwW8qPyrgeKXVhVtwi6ue2w5k4WrqE3kuxEJIMWqH3UseBs8+cKcO3KPJzozwqXey9hbzvkrNavhsfIjmbx89Hzo7s+AdQSwMEFAAACAgAADgh7K2GadltAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJKZcZKhYaKBcapBcnJKYmKirrlBWpJpskmqcUqahZGhuZFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAADgh7DPhX4dYAgAA/QQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAADgh7K2GadltAAAAeAAAAAkAJAAAAAAAAAAAAAAApQIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABdAwAAAAA=
+    dataString: UEsDBBQAAAgIAAA4IexPdUEoVQIAAP0EAAALACQAZ3JhcGgwLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQF1VE1z2jAQ/SuMziUjQz6a3lpCSA/5mNBOLr4s0hprkCWPJAdIhv/elWywy0xOiN23u+89rfzJlPE1imDdwin5aCWyHyMWz+zbqE8+4A7W1izVBx4xb0qGMoIgYV4hKEvxLJZ5W2FwSvw0ax3BnIKNUYV11VyucWZ98BQuQHuklLMhVhsKfY7Yjn7Gt7FkT6fJTTx90OmWjw50FGgCuh6aTS74lHM+veoqjvgW3hihoapRRu591e11h874dcIZktVBogRhtVa+48TCvk6al3WJDqNoqYAkJh78Ik4uUa3LEAkPq5+LwmPoSDnY3ylHXrVt2S/bGliB37TM3kE3cdA4S5zano9fpQtnq4fj2IzHEaFUYvMKewE+DAwehu965lnyZwt6AyuNbyWaJ7twtjGSksE1sbTxOLnr/56UzUoUmz7eUj0LNnVvOD+7najhkMTvZlpVq2TkZRtYapv8TkuAjm7mNxFOK+K7FhSNLP56/APr4S51iXvlfKBUp9JEeivbuAhl8+RZVNOEmXUG3bBDjQZ02L9Qn3B+hWe5r6vuIT6bbnqXO76Gs5IU7vGcn6Ve7PZ0W76020f05XMTtDLYWx0TT2TUzBrTbthQ0rFs2bgCxKBs3Sj5/26x6+kqy4BPkQshAWB8w4vVlbjEqSy+T7KbCUvLpwzpBP3SEu3soWszfXNDi3b8mowWDuq07dLBdqE+Kut7pDKFXQqHaJ7bDifi6GgIPUs5l4oMWmIIyqQLZ58501ZsUOanRnlSOt8FB3nfJWe1erchRnI2S5+PnB3Y4R9QSwMEFAAACAgAADgh7K2GadltAAAAeAAAAAkAJABtZXRhLmpzb24KACAAAAAAAAEAGAAAgD7V3rGdAQCAPtXesZ0BAIA+1d6xnQGrVipLLSrOzM9TslIw0TPSMzTVUVBKL0osyCgGihiCOKWZKSB2tJKZcZKhYaKBcapBcnJKYmKirrlBWpJpskmqcUqahZGhuZFSLFB9SWVBql9ibipET0BiSUZaZl5KZl66nntRZoo7yGil2FoAUEsBAi0AFAAACAgAADgh7E91QShVAgAA/QQAAAsAJAAAAAAAAAAAAAAAAAAAAGdyYXBoMC5qc29uCgAgAAAAAAABABgAAIA+1d6xnQEAgD7V3rGdAQCAPtXesZ0BUEsBAi0AFAAACAgAADgh7K2GadltAAAAeAAAAAkAJAAAAAAAAAAAAAAAogIAAG1ldGEuanNvbgoAIAAAAAAAAQAYAACAPtXesZ0BAIA+1d6xnQEAgD7V3rGdAVBLBQYAAAAAAgACALgAAABaAwAAAAA=
     upgradeData: 
     file_cachedStartup: {fileID: 0}
     data_cachedStartup: 
@@ -1859,7 +1859,7 @@ MonoBehaviour:
     seed: 0
     pivotPointRoot: {fileID: 0}
     spreadOutCount: 1
-  showGraphs: 0
+  showGraphs: 1
 --- !u!114 &732219880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1939,9 +1939,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tilemap: {fileID: 1919613783}
   _sizeMap: {x: 25, y: 25}
+  _persentFill: 39
+  _minDistancePlayerFromFinish: 10
   _groundWithoutGrassCenter: {fileID: 11400000, guid: fc2bb6bedc160de498268fa530ca28b4,
     type: 2}
+  _groundWithoutGrassLeft: {fileID: 11400000, guid: 6976138d1611e674b80bcd94628adb17,
+    type: 2}
   _groundWithoutGrassLeftDown: {fileID: 11400000, guid: 6aa0da241fd957d4f847e40009211c74,
+    type: 2}
+  _groundWithoutGrassRight: {fileID: 11400000, guid: b45dccf881d6ea34da7943b0a8f3e298,
     type: 2}
   _groundWithoutGrassRightDown: {fileID: 11400000, guid: 31215c4a3d95c2c4fba07a889a35f44c,
     type: 2}
@@ -1953,7 +1959,10 @@ MonoBehaviour:
     type: 2}
   _groundWithGrassLeftTop: {fileID: 11400000, guid: 7324ea473b6d83d4b8345a5295fca757,
     type: 2}
-  _persentFill: 8
+  _playerStartTransform: {fileID: 249894305}
+  _finishTransform: {fileID: 179687858}
+  _deathZoneTransform: {fileID: 244475911}
+  _zombieTransform: {fileID: 1659283823}
 --- !u!4 &831213105 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8837146922523623684, guid: 6429ec4a2f06f7d459a171132c873a0d,
@@ -4395,7 +4404,7 @@ GameObject:
   - component: {fileID: 1919613783}
   - component: {fileID: 1919613782}
   - component: {fileID: 1919613781}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4671,7 +4680,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2147000517}
   - component: {fileID: 2147000516}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grid
   m_TagString: Untagged
   m_Icon: {fileID: 0}
