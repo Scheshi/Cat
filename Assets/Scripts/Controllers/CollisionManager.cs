@@ -12,16 +12,14 @@ namespace Assets.Scripts.Controllers
     {
         private Action<float> _action = delegate(float f) {  };
         private IView _character;
-    private List<IView> _coins;
-    private List<IView> _deathPoints;
+        private List<IView> _deathPoints;
     private IView _endPoint;
     private GameController _gameController;
 
 
-    public CollisionManager(PlayerMove playerController, IView character, IView[] coins, IView[] deathPoints, IView endPoint, GameController controller)
+    public CollisionManager(PlayerMove playerController, IView character, IView[] deathPoints, IView endPoint, GameController controller)
     {
         _character = character;
-        _coins = new List<IView>(coins);
         _deathPoints = new List<IView>(deathPoints);
         _endPoint = endPoint;
         _gameController = controller;
@@ -31,10 +29,6 @@ namespace Assets.Scripts.Controllers
 
     public void Refresh()
     {
-        foreach (var item in _coins)
-        {
-            item.Transform.gameObject.SetActive(true);
-        }
         foreach (var item in _deathPoints)
         {
             item.Transform.gameObject.SetActive(true);
@@ -44,12 +38,7 @@ namespace Assets.Scripts.Controllers
     
     private void CoinCollision(IView obj)
     {
-        obj?.Transform.gameObject.SetActive(false);
-        if (_coins.Contains(obj))
-        {
-            Debug.Log("Подбор монетки!");
-        }
-        else if (_deathPoints.Contains(obj))
+        if (_deathPoints.Contains(obj))
         {
             _gameController.Restart();
             Debug.Log("Вы проиграли!");
@@ -65,7 +54,6 @@ namespace Assets.Scripts.Controllers
     public void Dispose()
     {
         _character = null;
-        _coins.Clear();
         _deathPoints.Clear();
         _endPoint = null;
         _action = null;

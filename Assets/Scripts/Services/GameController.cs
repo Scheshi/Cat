@@ -49,13 +49,14 @@ namespace Assets.Scripts.Services
             _weaponRotation = new WeaponRotation(_weapon, 5.0f, _player.Obj);
             _camera = new CameraMove(Camera.main, _player.Obj.transform);
             _backGround = new BackGroundController(_backGroundObject.transform, Camera.main);
-            _collisionManager = new CollisionManager(_playerMoveController, _player.Obj, _coins, _deathZones, _endPoint, this);
+            _collisionManager = new CollisionManager(_playerMoveController, _player.Obj, _deathZones, _endPoint, this);
             foreach (var enemy in _animatedEnemies)
             {
                 var anim = new AnimStateMachineController(enemy.AnimationConfig, enemy.Obj.GetComponent<SpriteRenderer>(), 12.0f);
                 _enemiesControllers.Add(new EnemyAnimationController(enemy.Obj, anim));
                 anim.StartAnimation(AnimState.Run);
             }
+            _player.Obj.GetComponent<StoryQuests>().StartStory();
         }
         
         private void Update()

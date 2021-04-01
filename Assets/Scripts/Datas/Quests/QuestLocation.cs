@@ -2,9 +2,8 @@
 
 namespace Datas
 {
+    [CreateAssetMenu(menuName = "Configs/Quests/Quest Location")]
     public class QuestLocation : Quest
     {
-        public Vector2 position;
-        public Vector2 size;
     }
 }

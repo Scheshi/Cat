@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Tilemaps;
+using Views;
 
 
 public class GenerateLevelView : MonoBehaviour
@@ -26,6 +27,8 @@ public class GenerateLevelView : MonoBehaviour
 
     [SerializeField] private Transform _deathZoneTransform;
     [SerializeField] private Transform _zombieTransform;
+    [SerializeField] private QuestObjectView _money;
+    [SerializeField] private int moneyCount;
     
     
     
@@ -52,4 +55,8 @@ public class GenerateLevelView : MonoBehaviour
     public Transform ZombieTransform => _zombieTransform;
 
     public Transform FinishTransform => _finishTransform;
+
+    public QuestObjectView Money => _money;
+
+    public int MoneyCount => moneyCount;
 }

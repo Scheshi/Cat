@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using Object = System.Object;
 using Random = System.Random;
 
 
@@ -157,6 +158,7 @@ namespace Assets.Scripts.Controllers
             SetFinishPoint();
             SetStalkerPosition();
             SetDeathZonePosition();
+            SetMoneyObjects();
         }
 
         private void SetStartPointPlayer()
@@ -265,6 +267,37 @@ namespace Assets.Scripts.Controllers
                     }
                 }
             }
+        }
+
+        private void SetMoneyObjects(int count = 0)
+        {
+            for (int x = 0; x < _map.GetLength(0); x++)
+            {
+                for (int y = 0; y < _map.GetLength(1); y++)
+                {
+                    try
+                    {
+                        if (_map[x + 1, y] == 0 &&
+                            _map[x - 1, y] == 0 &&
+                            _map[x, y] == 0 &&
+                            _map[x, y + 1] == 0 &&
+                            _map[x, y - 1] != 0 &&
+                            UnityEngine.Random.value > 0.9)
+                        {
+                            var money = UnityEngine.Object.Instantiate(_view.Money);
+                            money.transform.position =
+                                new Vector3Int(_view.WightMap / 2 + x, _view.HeightMap / 2 + y, 0);
+                            count++;
+                            if (count > _view.MoneyCount) return;
+                        }
+                    }
+                    catch
+                    {
+                        continue;
+                    }
+                }
+            }
+            if(count < _view.MoneyCount) SetMoneyObjects(count);
         }
     }
 }

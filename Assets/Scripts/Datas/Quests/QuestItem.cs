@@ -1,19 +1,19 @@
 ﻿using Assets.Scripts;
+using UnityEngine;
+
 
 namespace Datas
 {
+    [CreateAssetMenu(menuName = "Configs/Quests/Quest Item")]
     public class QuestItem : Quest
     {
-        public int count;
-        public ObjectView _itemPrefab;
-        private int currentCount;
-
-        public override void OnIncrementProgress()
+        public override void OnIncrementProgress(ObjectView view)
         {
-            currentCount++;
-            if (currentCount == count)
+            Debug.LogWarningFormat("Take");
+            if (view.gameObject.CompareTag("Player"))
             {
-                isComplete = true;
+                base.OnIncrementProgress(view);
+                view.gameObject.SetActive(false);
             }
         }
     }
