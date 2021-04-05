@@ -15,8 +15,6 @@ namespace Assets.Scripts.Controllers
         //private readonly AIDestinationSetter _destinationSetter;
         private readonly Seeker _seeker;
         //private readonly PatrolAIPath _patrol;
-  
-        private bool _isPatrolling;
 
         #endregion
  
@@ -40,13 +38,11 @@ namespace Assets.Scripts.Controllers
 
         public void StartProtection(Transform target)
         {
-            _isPatrolling = false;
             _model.SetTarget(target);
         }
 
         public void FinishProtection()
         {
-            _isPatrolling = true;
             _model.SetTarget(_model.GetNextTarget());
         }
         

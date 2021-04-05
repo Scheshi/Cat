@@ -36,13 +36,14 @@ namespace Datas
             Debug.Log(objects.Length);
             foreach (var item in objects)
             {
-                if (item.gameObject == PrefabUtility
+                /*if (item.gameObject == PrefabUtility
                     .GetCorrespondingObjectFromSource(_type.ObjectViewPrefab.gameObject))
                 {
                     Debug.Log("Find");
                     _objects.Add(item);
                     item.OnTargetAction += OnIncrementProgress;
-                }
+                }*/
+                _objects.Add(item);
             }
         }
 
