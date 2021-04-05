@@ -50,7 +50,7 @@ namespace Assets.Scripts.Controllers
                 map += "\n";
             }
             
-            Debug.Log(map);
+            //Debug.Log(map);
             
             ChangeValues();
             //ChangeValues(); При втором вызове вылетает IndexOutOfRangeException. Почему - ума не приложу.
@@ -136,7 +136,7 @@ namespace Assets.Scripts.Controllers
                 }
                 map += "\n";
             }
-            Debug.Log(map);
+            //Debug.Log(map);
         }
 
         private void SetTile()
@@ -209,7 +209,6 @@ namespace Assets.Scripts.Controllers
                     {
                         continue;
                     }
-                    Debug.Log(x + ", " + y);
                 }
             }
         }

@@ -33,9 +33,11 @@ namespace Datas
         {
             Debug.Log("Init");
             var objects = Object.FindObjectsOfType<QuestObjectView>();
+            Debug.Log(objects.Length);
             foreach (var item in objects)
             {
-                if (item == PrefabUtility.GetCorrespondingObjectFromSource(_type.ObjectViewPrefab))
+                if (item.gameObject == PrefabUtility
+                    .GetCorrespondingObjectFromSource(_type.ObjectViewPrefab.gameObject))
                 {
                     Debug.Log("Find");
                     _objects.Add(item);
